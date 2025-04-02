@@ -1,9 +1,14 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
 
+  # A03:2021 - Injection. SQL Injection through unsafe string concatenation
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    if params[:search]
+      @articles = Article.where("title LIKE '%#{params[:search]}%' OR content LIKE '%#{params[:search]}%'")
+    else
+      @articles = Article.all
+    end
   end
 
   # GET /articles/1 or /articles/1.json
