@@ -1,0 +1,17 @@
+URL Fetch
+
+<%= form_with(url: proxy_path, method: :post, local: true) do |form| %>
+  <div>
+    <%= form.label :url, "URL" %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div>
+    <%= form.submit "Fetch Content" %>
+  </div>
+<% end %>
+
+<div>
+  Result
+  <%= @content %>
+</div>
