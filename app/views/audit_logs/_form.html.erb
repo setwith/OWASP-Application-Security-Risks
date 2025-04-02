@@ -1,0 +1,32 @@
+<%= form_with(model: audit_log) do |form| %>
+  <% if audit_log.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(audit_log.errors.count, "error") %> prohibited this audit_log from being saved:</h2>
+
+      <ul>
+        <% audit_log.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :activity, style: "display: block" %>
+    <%= form.text_field :activity %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.label :ip_address, style: "display: block" %>
+    <%= form.text_field :ip_address %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
