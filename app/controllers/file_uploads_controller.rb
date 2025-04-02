@@ -47,6 +47,16 @@ class FileUploadsController < ApplicationController
     end
   end
 
+  # A08:2021 - Software and Data Integrity Failures. Unsafe Deserialization Vulnerability, Use of imported data
+  def import_data
+    data = params[:data]
+    imported_data = Marshal.load(Base64.decode64(data))
+    
+    render json: { status: 'success', data: imported_data }
+  rescue => e
+    render json: { status: 'error', message: e.message }
+  end
+
   # DELETE /file_uploads/1 or /file_uploads/1.json
   def destroy
     @file_upload.destroy!

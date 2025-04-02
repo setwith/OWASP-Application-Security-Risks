@@ -8,6 +8,11 @@ Bundler.require(*Rails.groups)
 
 module OwaspVulnerableApp
   class Application < Rails::Application
+
+    # A08:2021 - Software and Data Integrity Failures. Lack of Script Integrity Verification
+    config.assets.compile = true
+    config.serve_static_assets = true
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
