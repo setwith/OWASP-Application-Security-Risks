@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  # A01:2021 - Broken Access Control: No access control checks, any user can edit any article
   # GET /articles/1/edit
   def edit
   end
@@ -34,6 +35,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # A01:2021 - Broken Access Control: No access control checks, any user can edit any article
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
     respond_to do |format|
