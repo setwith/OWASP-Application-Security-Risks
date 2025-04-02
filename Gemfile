@@ -2,6 +2,10 @@ source "https://rubygems.org"
 
 ruby "3.2.2"
 
+# A06:2021 - Vulnerable and Outdated Components
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.5"
 
