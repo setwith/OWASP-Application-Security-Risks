@@ -1,6 +1,7 @@
 class AuditLogsController < ApplicationController
   before_action :set_audit_log, only: %i[ show edit update destroy ]
 
+  # A09:2021 - Security Logging and Monitoring Failures. Insufficient log detail
   # GET /audit_logs or /audit_logs.json
   def index
     @audit_logs = AuditLog.all
@@ -8,6 +9,7 @@ class AuditLogsController < ApplicationController
 
   # GET /audit_logs/1 or /audit_logs/1.json
   def show
+    @audit_log = AuditLog.find(params[:id])
   end
 
   # GET /audit_logs/new
