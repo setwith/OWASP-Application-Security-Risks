@@ -12,10 +12,14 @@ Rails.application.configure do
   config.eager_load = false
 
   # Show full error reports.
+  # A05:2021 - Security Misconfiguration. Detailed Error Messages Enabled
   config.consider_all_requests_local = true
 
   # Enable server timing
   config.server_timing = true
+
+  # A05:2021 - Security Misconfiguration. Disabling Cross-Site Request Forgery (CSRF) protection
+  config.action_controller.allow_forgery_protection = false
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
