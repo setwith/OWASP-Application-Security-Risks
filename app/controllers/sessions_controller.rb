@@ -15,7 +15,26 @@ class SessionsController < ApplicationController
       render :new
     end
   end
+
+  def forgot_password
+  end
   
+  def reset_password
+    username = params[:username]
+    security_answer = params[:security_question]
+  
+    user = User.find_by(username: username)
+  
+    if user
+      new_password = "reset123"
+      user.update(password: new_password)
+      redirect_to login_path, notice: "Your password has been reset to: #{new_password}"
+    else
+      flash.now[:alert] = "User not found"
+      render :forgot_password
+    end
+  end
+
   def destroy
     session[:user_id] = nil
     redirect_to root_path, notice: 'Successfully logged out!'
