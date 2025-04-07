@@ -1,5 +1,33 @@
 # Instructions for Reproducing OWASP Top 10 2021 Vulnerabilities in a Rails Application
 
+## Running the Application in Docker
+
+This README assumes you have Docker installed on your system. These steps will guide you in running the vulnerable Rails application within a Docker container.
+
+1.  **Clone the Repository (if you haven't already):**
+
+2.  **Build and Start the Docker Containers:**
+    ```
+    docker-compose build
+    ```
+    ```
+    docker-compose up
+    ```
+    This commands builds the Docker images defined in your `docker-compose.yml` file and starts the containers. 
+
+3.  **Access the Application:**
+    Open your web browser and navigate to `http://localhost:3000`.
+
+4.  **Set up the Database:**
+    In a separate terminal, execute the following commands to create and migrate the database within the `web` container:
+    ```
+    docker-compose exec web bundle exec rails db:create
+    docker-compose exec web bundle exec rails db:migrate
+    docker-compose exec web bundle exec rails db:seed 
+    ```
+
+Once the containers are running and the database is set up, you can proceed with the vulnerability reproduction steps below.
+
 ## A01:2021 - Broken Access Control
 
 ### 1. Testing IDOR (Insecure Direct Object Reference)
